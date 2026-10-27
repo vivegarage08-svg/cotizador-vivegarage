@@ -3,677 +3,73 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Vive Garage - Cotizador Personalizado</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
-  <style>
-    :root {
-      --vg-blue: #1b4ed8;       /* Azul eléctrico extraído de tu logo */
-      --vg-dark: #0f172a;       /* Negro/Azul oscuro de tu logo */
-      --vg-light-bg: #f8fafc;   /* Blanco azulado para fondo */
-    }
+  <title>Redirigiendo a Vive Garage...</title>
+
+  <!-- ========================================== -->
+  <!-- SCRIPT DE REDIRECCIÓN AUTOMÁTICA          -->
+  <!-- ========================================== -->
+  <script>
+    // REEMPLAZA LA URL DE ABAJO POR TU NUEVA PÁGINA WEB
+    const urlNueva = "https://www.vivegarage.com/cotizador"; 
     
+    // Redirige inmediatamente
+    window.location.replace(urlNueva);
+  </script>
+  <!-- ========================================== -->
+
+  <style>
+    /* Estilos básicos solo para la pantalla de carga rápida */
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: var(--vg-light-bg);
-      color: #1e293b;
-      position: relative;
-    }
-
-    /* EFECTO DE MARCA DE AGUA EN EL FONDO */
-    body::before {
-      content: "";
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 80vw;
-      max-width: 650px;
-      height: 80vw;
-      max-height: 650px;
-      background-image: url('https://i.ibb.co/svYFfbLj/22b91245-d9d4-4fca-97c1-f8d8f4e28fd0.jpg');
-      background-repeat: no-repeat;
-      background-position: center;
-      background-size: contain;
-      opacity: 0.05; /* Transparencia para efecto marca de agua tenue */
-      z-index: -1;
-      pointer-events: none;
-    }
-
-    .brand-header {
-      background: linear-gradient(135deg, #0b132b 0%, #1c2541 100%);
-      color: white;
-      padding: 2rem 0;
-      border-bottom: 4px solid var(--vg-blue);
-      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
-    }
-
-    .logo-img-header {
-      max-height: 110px;
-      width: auto;
-      border-radius: 50%;
-      box-shadow: 0 0 15px rgba(27, 78, 216, 0.4);
-    }
-
-    .card-custom {
-      border: none;
-      border-radius: 14px;
-      box-shadow: 0 4px 18px rgba(0,0,0,0.06);
-      background-color: rgba(255, 255, 255, 0.95); /* Fondo blanco semitransparente para ver la marca de agua */
-    }
-
-    .option-card {
-      border: 2px solid #e2e8f0;
-      border-radius: 12px;
-      padding: 1.25rem;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      height: 100%;
-      background-color: white;
-      position: relative;
-    }
-
-    .option-card:hover {
-      border-color: var(--vg-blue);
-      transform: translateY(-2px);
-      box-shadow: 0 6px 14px rgba(27, 78, 216, 0.12);
-    }
-
-    .option-card.selected {
-      border-color: var(--vg-blue);
-      background-color: #eff6ff;
-    }
-
-    .option-card .badge-range {
-      position: absolute;
-      top: 12px;
-      right: 12px;
-      font-size: 0.8rem;
-    }
-
-    .summary-box {
-      background-color: rgba(255, 255, 255, 0.97);
-      border-radius: 14px;
-      padding: 1.5rem;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.08);
-      border: 1px solid #e2e8f0;
-      position: sticky;
-      top: 20px;
-    }
-
-    .total-box {
-      background-color: #f1f5f9;
-      border: 2px dashed var(--vg-blue);
-      border-radius: 10px;
-      padding: 1rem;
-      text-align: center;
-      margin-top: 1rem;
-      margin-bottom: 1rem;
-    }
-
-    .step-badge {
-      background-color: var(--vg-blue);
-      color: white;
-      width: 30px;
-      height: 30px;
-      border-radius: 50%;
-      display: inline-flex;
+      background-color: #f8fafc;
+      display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
+      height: 100vh;
+      margin: 0;
+      color: #1e293b;
+      text-align: center;
+    }
+    .spinner {
+      width: 50px;
+      height: 50px;
+      border: 5px solid #e2e8f0;
+      border-top: 5px solid #1b4ed8;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin-bottom: 20px;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    .fallback-link {
+      margin-top: 20px;
+      font-size: 0.9rem;
+      color: #64748b;
+    }
+    .fallback-link a {
+      color: #1b4ed8;
+      text-decoration: none;
       font-weight: bold;
-      margin-right: 10px;
-      font-size: 0.95rem;
-    }
-
-    .btn-vg-blue {
-      background-color: var(--vg-blue);
-      color: white;
-      border: none;
-    }
-
-    .btn-vg-blue:hover {
-      background-color: #1d4ed8;
-      color: white;
-    }
-
-    .whatsapp-btn {
-      background-color: #25D366;
-      color: white;
-      font-weight: 600;
-      border: none;
-      padding: 12px 20px;
-      border-radius: 10px;
-      transition: background 0.2s;
-    }
-
-    .whatsapp-btn:hover {
-      background-color: #1da851;
-      color: white;
     }
   </style>
 </head>
 <body>
-
-  <!-- ENCABEZADO CON TU LOGO -->
-  <header class="brand-header text-center">
-    <div class="container d-flex flex-column align-items-center">
-      <img src="https://i.ibb.co/svYFfbLj/22b91245-d9d4-4fca-97c1-f8d8f4e28fd0.jpg" alt="Vive Garage Logo" class="logo-img-header mb-3">
-      <p class="lead mb-0 fs-6 text-light opacity-90 fw-semibold">Servicio Automotriz Preventivo a Domicilio</p>
-      <span class="badge bg-light text-primary mt-2 fw-bold px-3 py-2"><i class="bi bi-shield-check"></i> Garantía Limpieza Cero Manchas</span>
-    </div>
-  </header>
-
-  <div class="container my-4">
-    <div class="row g-4">
-      
-      <!-- COLUMNA PRINCIPAL - FORMULARIO -->
-      <div class="col-lg-8">
-        
-        <!-- PASO 1: DATOS DEL VEHÍCULO -->
-        <div class="card card-custom p-4 mb-4">
-          <h5 class="fw-bold mb-3 d-flex align-items-center text-dark">
-            <span class="step-badge">1</span> Datos de tu Vehículo
-          </h5>
-          <div class="row g-3">
-            <div class="col-md-4">
-              <label class="form-label fw-semibold">Marca</label>
-              <input type="text" id="carBrand" class="form-control" placeholder="Ej. Nissan, VW" required>
-            </div>
-            <div class="col-md-4">
-              <label class="form-label fw-semibold">Modelo</label>
-              <input type="text" id="carModel" class="form-control" placeholder="Ej. Versa, Jetta" required>
-            </div>
-            <div class="col-md-4">
-              <label class="form-label fw-semibold">Año</label>
-              <input type="number" id="carYear" class="form-control" placeholder="Ej. 2018" required>
-            </div>
-            <div class="col-md-6">
-              <label class="form-label fw-semibold">Motor / Cilindrada</label>
-              <input type="text" id="carEngine" class="form-control" placeholder="Ej. 1.6L 4Cyl">
-            </div>
-            <div class="col-md-6">
-              <label class="form-label fw-semibold">Tu Nombre Completo</label>
-              <input type="text" id="clientName" class="form-control" placeholder="Ej. Juan Pérez">
-            </div>
-          </div>
-        </div>
-
-        <!-- PASO 2: TIPO DE SERVICIO -->
-        <div class="card card-custom p-4 mb-4">
-          <h5 class="fw-bold mb-3 d-flex align-items-center text-dark">
-            <span class="step-badge">2</span> ¿Qué tipo de servicio requieres?
-          </h5>
-          <div class="row g-3">
-            <div class="col-md-6">
-              <div class="option-card" id="cardServicioAceite" onclick="selectServiceType('aceite_filtro', this)">
-                <h6 class="fw-bold mb-1"><i class="bi bi-droplet-half text-primary me-1"></i> Cambio de Aceite y Filtro</h6>
-                <p class="text-muted small mb-0">Servicio básico de lubricación (Aceite + Filtro de Aceite + Mano de Obra).</p>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="option-card selected" id="cardServicioPreventivo" onclick="selectServiceType('preventivo', this)">
-                <span class="badge btn-vg-blue badge-range">Recomendado</span>
-                <h6 class="fw-bold mb-1"><i class="bi bi-tools text-primary me-1"></i> Servicio Preventivo Completo</h6>
-                <p class="text-muted small mb-0">Mantenimiento general (Aceite + Filtro Aceite + Filtro Aire + Bujías + Mano de Obra).</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- PASO 3: SELECCIÓN DE ACEITE PARA MOTOR -->
-        <div class="card card-custom p-4 mb-4">
-          <div class="d-flex justify-content-between align-items-center mb-3">
-            <h5 class="fw-bold mb-0 d-flex align-items-center text-dark">
-              <span class="step-badge">3</span> Selección de Aceite para Motor
-            </h5>
-            <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modalAceite">
-              <i class="bi bi-info-circle"></i> Guía de Aceites
-            </button>
-          </div>
-          
-          <div class="row g-3">
-            <div class="col-md-4">
-              <div class="option-card selected" data-min="500" data-max="700" onclick="selectOption('aceite', 'Mineral', '$500 - $700', this)">
-                <span class="badge bg-secondary badge-range">$500 - $700</span>
-                <h6 class="fw-bold mb-1">Mineral</h6>
-                <p class="text-muted small mb-2">Uso recomendable para motores antiguos o de alto kilometraje.</p>
-                <small class="text-primary fw-semibold"><i class="bi bi-clock-history"></i> Cambio cada 5,000 km</small>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="option-card" data-min="700" data-max="900" onclick="selectOption('aceite', 'Semi sintético', '$700 - $900', this)">
-                <span class="badge btn-vg-blue badge-range">$700 - $900</span>
-                <h6 class="fw-bold mb-1">Semi sintético</h6>
-                <p class="text-muted small mb-2">Opcion balanceada entre buena lubricació y limpieza.</p>
-                <small class="text-primary fw-semibold"><i class="bi bi-clock-history"></i> Cambio cada 7,500 km</small>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="option-card" data-min="1000" data-max="1200" onclick="selectOption('aceite', '100% Sintético Premium', '$1,000 - $1,200', this)">
-                <span class="badge bg-dark badge-range">$1,000 - $1,200</span>
-                <h6 class="fw-bold mb-1">100% Sintético</h6>
-                <p class="text-muted small mb-2">Máxima protección y eficiencia de motor.</p>
-                <small class="text-primary fw-semibold"><i class="bi bi-clock-history"></i> Cambio cada 10,000 km</small>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- PASO 4: SELECCIÓN DE FILTRO DE ACEITE -->
-        <div class="card card-custom p-4 mb-4">
-          <h5 class="fw-bold mb-3 d-flex align-items-center text-dark">
-            <span class="step-badge">4</span> Selección de Filtro de Aceite
-          </h5>
-          <div class="row g-3">
-            <div class="col-md-6">
-              <div class="option-card selected" data-min="75" data-max="100" onclick="selectOption('filtroAceite', 'Estándar OEM', '$75 - $100', this)">
-                <span class="badge bg-secondary badge-range">$75 - $100</span>
-                <h6 class="fw-bold mb-1">Estándar</h6>
-                <p class="text-muted small mb-0">Filtración confiable de especificación original para uso habitual.</p>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="option-card" data-min="169" data-max="269" onclick="selectOption('filtroAceite', 'Premium / Alto Rendimiento', '$169 - $269', this)">
-                <span class="badge btn-vg-blue badge-range">$169 - $269</span>
-                <h6 class="fw-bold mb-1">Premium</h6>
-                <p class="text-muted small mb-0">Mayor capacidad de retención de impurezas y flujo optimizado.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- PASO 5: SELECCIÓN DE FILTRO DE AIRE -->
-        <div class="card card-custom p-4 mb-4" id="sectionFiltroAire">
-          <h5 class="fw-bold mb-3 d-flex align-items-center text-dark">
-            <span class="step-badge">5</span> Selección de Filtro de Aire
-          </h5>
-          <div class="row g-3">
-            <div class="col-md-12">
-              <div class="option-card selected" data-min="135" data-max="250" onclick="selectOption('filtroAire', 'Filtro de Aire de Motor (Estándar)', '$135 - $250', this)">
-                <span class="badge btn-vg-blue badge-range">$135 - $250</span>
-                <h6 class="fw-bold mb-1"><i class="bi bi-wind text-primary me-1"></i> Filtro de Aire de Motor</h6>
-                <p class="text-muted small mb-0">Protege tu motor reteniendo polvo y partículas del ambiente para asegurar una correcta mezcla de aire y combustible.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- PASO 6: SELECCIÓN DE BUJÍAS -->
-        <div class="card card-custom p-4 mb-4" id="sectionBujias">
-          <div class="d-flex justify-content-between align-items-center mb-3">
-            <h5 class="fw-bold mb-0 d-flex align-items-center text-dark">
-              <span class="step-badge">6</span> Selección de Bujías de Encendido
-            </h5>
-            <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modalBujias">
-              <i class="bi bi-info-circle"></i> Guía de Bujías
-            </button>
-          </div>
-
-          <div class="row g-3">
-            <div class="col-md-3">
-              <div class="option-card" data-min="0" data-max="0" onclick="selectOption('bujia', 'Sin Bujías', '$0', this)">
-                <span class="badge bg-light text-dark border badge-range">$0</span>
-                <h6 class="fw-bold mb-1">Sin Bujías</h6>
-                <p class="text-muted small mb-0">Solo servicio de aceite y filtros.</p>
-              </div>
-            </div>
-            <div class="col-md-3">
-              <div class="option-card" data-min="120" data-max="280" onclick="selectOption('bujia', 'Bujías de Cobre (Estándar)', '$30 - $70 c/u', this)">
-                <span class="badge bg-secondary badge-range">$30 - $70 c/u</span>
-                <h6 class="fw-bold mb-1">Cobre</h6>
-                <p class="text-muted small mb-2">Opción economica y de funcionamiento bueno.</p>
-                <small class="text-muted fs-7"><i class="bi bi-shield"></i> Duración: 30,000 km</small>
-              </div>
-            </div>
-            <div class="col-md-3">
-              <div class="option-card selected" data-min="320" data-max="600" onclick="selectOption('bujia', 'Bujías de Platino (NGK/Bosch)', '$80 - $150 c/u', this)">
-                <span class="badge btn-vg-blue badge-range">$80 - $150 c/u</span>
-                <h6 class="fw-bold mb-1">Platino</h6>
-                <p class="text-muted small mb-2">Encendido rápido y menor consumo.</p>
-                <small class="text-muted fs-7"><i class="bi bi-shield"></i> Duración: 80,000 km</small>
-              </div>
-            </div>
-            <div class="col-md-3">
-              <div class="option-card" data-min="720" data-max="1120" onclick="selectOption('bujia', 'Bujías de Iridium (Larga Duración)', '$180 - $280 c/u', this)">
-                <span class="badge bg-dark badge-range">$180 - $280 c/u</span>
-                <h6 class="fw-bold mb-1">Iridium</h6>
-                <p class="text-muted small mb-2">Tecnología de máxima precisión.</p>
-                <small class="text-muted fs-7"><i class="bi bi-shield"></i> Duración: 100,000 km</small>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- PASO 7: INCLUIDOS -->
-        <div class="card card-custom p-4 mb-4">
-          <h5 class="fw-bold mb-3 d-flex align-items-center text-dark">
-            <span class="step-badge">7</span> Servicios e Insumos Incluidos
-          </h5>
-          <div class="row g-2">
-            <div class="col-md-6">
-              <div class="p-2 border rounded d-flex align-items-center bg-white">
-                <i class="bi bi-check-circle-fill text-primary fs-5 me-2"></i>
-                <div>
-                  <strong>Escaneo Básico (Si aplica)</strong>
-                  <div class="text-muted small">Revision general de los síntomas de su carro.</div>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="p-2 border rounded d-flex align-items-center bg-white">
-                <i class="bi bi-check-circle-fill text-primary fs-5 me-2"></i>
-                <div>
-                  <strong>Reinicio de testigo de servicio (Si aplica)</strong>
-                  <div class="text-muted small">Se reinicia el testigo de servicio de cambio de aceite que indica el kilometraje restante antes del siguiente servicio.</div>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="p-2 border rounded d-flex align-items-center bg-white">
-                <i class="bi bi-check-circle-fill text-primary fs-5 me-2"></i>
-                <div>
-                  <strong>Servicio a Domicilio</strong>
-                  <div class="text-muted small">Traslado e instalación en tu hogar</div>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="p-2 border rounded d-flex align-items-center bg-white">
-                <i class="bi bi-check-circle-fill text-primary fs-5 me-2"></i>
-                <div>
-                  <strong>Inspección Visual de Puntos importantes</strong>
-                  <div class="text-muted small">Revisión general de regalo</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-      <!-- COLUMNA DERECHA - RESUMEN -->
-      <div class="col-lg-4">
-        <div class="summary-box">
-          <h5 class="fw-bold mb-3 text-dark"><i class="bi bi-receipt text-primary"></i> Resumen del Pedido</h5>
-          
-          <div class="border-bottom pb-2 mb-2">
-            <span class="text-muted small">Vehículo:</span>
-            <div class="fw-semibold" id="sumCar">Por especificar</div>
-          </div>
-
-          <div class="border-bottom pb-2 mb-2">
-            <span class="text-muted small">Cliente:</span>
-            <div class="fw-semibold" id="sumClient">Por especificar</div>
-          </div>
-
-          <div class="border-bottom pb-2 mb-2">
-            <span class="text-muted small">Tipo de Servicio:</span>
-            <div class="fw-semibold text-primary" id="sumTipoServicio">Servicio Preventivo Completo</div>
-          </div>
-
-          <div class="border-bottom pb-2 mb-2">
-            <span class="text-muted small">Aceite Seleccionado:</span>
-            <div class="fw-semibold text-primary" id="sumAceite">Mineral</div>
-            <span class="badge bg-light text-dark border" id="sumAceiteRango">$500 - $700</span>
-          </div>
-
-          <div class="border-bottom pb-2 mb-2">
-            <span class="text-muted small">Filtro de Aceite:</span>
-            <div class="fw-semibold text-primary" id="sumFiltroAceite">Estándar OEM</div>
-            <span class="badge bg-light text-dark border" id="sumFiltroAceiteRango">$75 - $100</span>
-          </div>
-
-          <div class="border-bottom pb-2 mb-2" id="sumRowFiltroAire">
-            <span class="text-muted small">Filtro de Aire:</span>
-            <div class="fw-semibold text-primary" id="sumFiltroAire">Filtro de Aire de Motor</div>
-            <span class="badge bg-light text-dark border" id="sumFiltroAireRango">$135 - $250</span>
-          </div>
-
-          <div class="border-bottom pb-2 mb-3" id="sumRowBujia">
-            <span class="text-muted small">Bujías Seleccionadas:</span>
-            <div class="fw-semibold text-primary" id="sumBujia">Bujías de Platino (NGK/Bosch)</div>
-            <span class="badge bg-light text-dark border" id="sumBujiaRango">$80 - $150 c/u</span>
-          </div>
-
-          <!-- TOTAL ESTIMADO DINÁMICO -->
-          <div class="total-box">
-            <span class="text-muted small fw-semibold text-uppercase d-block mb-1">Total Estimado del Servicio</span>
-            <h3 class="fw-bold text-primary mb-0" id="sumTotal">$1,795 - $2,714</h3>
-            <span class="badge bg-light text-secondary border mt-1 mb-1">IVA Incluido en Refacciones</span>
-            <small class="text-muted fs-7 d-block">*Sujeto a variación por modelo de carro</small>
-          </div>
-
-          <button class="btn whatsapp-btn w-100 d-flex align-items-center justify-content-center gap-2 mt-3" onclick="sendWhatsApp()">
-            <i class="bi bi-whatsapp fs-5"></i> Enviar a Vive Garage
-          </button>
-        </div>
-      </div>
-
-    </div>
+  <div class="spinner"></div>
+  <h2>Redirigiendo a nuestra nueva plataforma...</h2>
+  <p>Estamos preparando tu cotizador.</p>
+  
+  <!-- Enlace de respaldo por si el navegador bloquea la redirección automática -->
+  <div class="fallback-link">
+    ¿No te redirige automáticamente? <br>
+    <a href="#" id="linkManual">Haz clic aquí para ir al nuevo cotizador</a>
   </div>
 
-  <!-- MODALES EDUCATIVOS -->
-  <div class="modal fade" id="modalAceite" tabindex="-1">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title fw-bold"><i class="bi bi-droplet-fill text-primary"></i> Guía: ¿Qué Aceite Elegir?</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-        </div>
-        <div class="modal-body">
-          <h6><strong>1. Mineral:</strong></h6>
-          <p class="text-muted small">Opción económica y protección básica. Ideal para motores antiguos o con alto kilometraje. Recomendado cambiar cada 5,000 km.</p>
-          <hr>
-          <h6><strong>2. Semi sintético:</strong></h6>
-          <p class="text-muted small">Relación calidad-precio, protección equilibrada para autos modernos. Recomendado usarse en lugares donde el clima es templado. Cambio cada 7,500 km.</p>
-          <hr>
-          <h6><strong>3. 100% Sintético:</strong></h6>
-          <p class="text-muted small">La máxima protección para el motor. Resiste calor extremo, fluye al instante en frío y cuida al máximo tu motor. Dura hasta 10,000 km.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="modal fade" id="modalBujias" tabindex="-1">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title fw-bold"><i class="bi bi-lightning-charge-fill text-primary"></i> Guía: Tipos de Bujías</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-        </div>
-        <div class="modal-body">
-          <h6><strong>1. Cobre:</strong></h6>
-          <p class="text-muted small">Económicas pero de desgaste más rápido (Duración: 30,000 km).</p>
-          <hr>
-          <h6><strong>2. Platino:</strong></h6>
-          <p class="text-muted small">Punto medio ideal entre precio y durabilidad. Encendido eficiente (Duración: 80,000 km).</p>
-          <hr>
-          <h6><strong>3. Iridium:</strong></h6>
-          <p class="text-muted small">Rendimiento superior y máxima chispa de encendido (Duración: 100,000 km).</p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script>
-    let serviceType = "preventivo"; // 'aceite_filtro' o 'preventivo'
-
-    // Precios de mano de obra/servicio (Sin IVA)
-    const serviceCosts = {
-      aceite_filtro: { min: 300, max: 500 },
-      preventivo: { min: 600, max: 800 }
-    };
-
-    let selectedAceite = "Mineral";
-    let selectedAceiteRango = "$500 - $700";
-    let selectedAceiteMin = 500;
-    let selectedAceiteMax = 700;
-
-    let selectedFiltroAceite = "Estándar OEM";
-    let selectedFiltroAceiteRango = "$75 - $100";
-    let selectedFiltroAceiteMin = 75;
-    let selectedFiltroAceiteMax = 100;
-
-    let selectedFiltroAire = "Filtro de Aire de Motor";
-    let selectedFiltroAireRango = "$135 - $250";
-    let selectedFiltroAireMin = 135;
-    let selectedFiltroAireMax = 250;
-
-    let selectedBujia = "Bujías de Platino (NGK/Bosch)";
-    let selectedBujiaRango = "$80 - $150 c/u";
-    let selectedBujiaMin = 320;
-    let selectedBujiaMax = 600;
-
-    document.getElementById('carBrand').addEventListener('input', updateSummary);
-    document.getElementById('carModel').addEventListener('input', updateSummary);
-    document.getElementById('carYear').addEventListener('input', updateSummary);
-    document.getElementById('clientName').addEventListener('input', updateSummary);
-
-    function selectServiceType(type, element) {
-      serviceType = type;
-      
-      const parent = element.parentElement.parentElement;
-      const cards = parent.querySelectorAll('.option-card');
-      cards.forEach(card => card.classList.remove('selected'));
-      element.classList.add('selected');
-
-      const bujiasSection = document.getElementById('sectionBujias');
-      const filtroAireSection = document.getElementById('sectionFiltroAire');
-      
-      const sumRowBujia = document.getElementById('sumRowBujia');
-      const sumRowFiltroAire = document.getElementById('sumRowFiltroAire');
-
-      if (type === 'aceite_filtro') {
-        document.getElementById('sumTipoServicio').innerText = "Cambio de Aceite y Filtro";
-        
-        // Ocultar Bujías y Filtro de Aire
-        bujiasSection.style.display = "none";
-        filtroAireSection.style.display = "none";
-        sumRowBujia.style.display = "none";
-        sumRowFiltroAire.style.display = "none";
-      } else {
-        document.getElementById('sumTipoServicio').innerText = "Servicio Preventivo Completo";
-        
-        // Mostrar Bujías y Filtro de Aire
-        bujiasSection.style.display = "block";
-        filtroAireSection.style.display = "block";
-        sumRowBujia.style.display = "block";
-        sumRowFiltroAire.style.display = "block";
-      }
-
-      calculateTotal();
-    }
-
-    function selectOption(category, value, range, element) {
-      const parent = element.parentElement.parentElement;
-      const cards = parent.querySelectorAll('.option-card');
-      cards.forEach(card => card.classList.remove('selected'));
-      element.classList.add('selected');
-
-      const minVal = parseInt(element.getAttribute('data-min')) || 0;
-      const maxVal = parseInt(element.getAttribute('data-max')) || 0;
-
-      if (category === 'aceite') {
-        selectedAceite = value;
-        selectedAceiteRango = range;
-        selectedAceiteMin = minVal;
-        selectedAceiteMax = maxVal;
-        document.getElementById('sumAceite').innerText = value;
-        document.getElementById('sumAceiteRango').innerText = range;
-      } else if (category === 'filtroAceite') {
-        selectedFiltroAceite = value;
-        selectedFiltroAceiteRango = range;
-        selectedFiltroAceiteMin = minVal;
-        selectedFiltroAceiteMax = maxVal;
-        document.getElementById('sumFiltroAceite').innerText = value;
-        document.getElementById('sumFiltroAceiteRango').innerText = range;
-      } else if (category === 'filtroAire') {
-        selectedFiltroAire = value;
-        selectedFiltroAireRango = range;
-        selectedFiltroAireMin = minVal;
-        selectedFiltroAireMax = maxVal;
-        document.getElementById('sumFiltroAire').innerText = value;
-        document.getElementById('sumFiltroAireRango').innerText = range;
-      } else if (category === 'bujia') {
-        selectedBujia = value;
-        selectedBujiaRango = range;
-        selectedBujiaMin = minVal;
-        selectedBujiaMax = maxVal;
-        document.getElementById('sumBujia').innerText = value;
-        document.getElementById('sumBujiaRango').innerText = range;
-      }
-
-      calculateTotal();
-    }
-
-    function calculateTotal() {
-      // 1. Suma base solo de Refacciones
-      let refaccionesMin = selectedAceiteMin + selectedFiltroAceiteMin;
-      let refaccionesMax = selectedAceiteMax + selectedFiltroAceiteMax;
-
-      if (serviceType === 'preventivo') {
-        refaccionesMin += selectedFiltroAireMin + selectedBujiaMin;
-        refaccionesMax += selectedFiltroAireMax + selectedBujiaMax;
-      }
-
-      // 2. Aplica el 16% de IVA ÚNICAMENTE a las Refacciones
-      const refaccionesConIvaMin = Math.round(refaccionesMin * 1.16);
-      const refaccionesConIvaMax = Math.round(refaccionesMax * 1.16);
-
-      // 3. Suma la Mano de Obra del Servicio (sin IVA) al resultado
-      const manoDeObraMin = serviceCosts[serviceType].min;
-      const manoDeObraMax = serviceCosts[serviceType].max;
-
-      const totalFinalMin = refaccionesConIvaMin + manoDeObraMin;
-      const totalFinalMax = refaccionesConIvaMax + manoDeObraMax;
-
-      const totalFormatted = `$${totalFinalMin.toLocaleString('es-MX')} - $${totalFinalMax.toLocaleString('es-MX')}`;
-      document.getElementById('sumTotal').innerText = totalFormatted;
-    }
-
-    function updateSummary() {
-      const brand = document.getElementById('carBrand').value || '';
-      const model = document.getElementById('carModel').value || '';
-      const year = document.getElementById('carYear').value || '';
-      const client = document.getElementById('clientName').value || 'Por especificar';
-
-      const carText = (brand || model || year) ? `${brand} ${model} ${year}` : 'Por especificar';
-      document.getElementById('sumCar').innerText = carText;
-      document.getElementById('sumClient').innerText = client;
-    }
-
-    function sendWhatsApp() {
-      const brand = document.getElementById('carBrand').value || 'No especificado';
-      const model = document.getElementById('carModel').value || 'No especificado';
-      const year = document.getElementById('carYear').value || 'No especificado';
-      const engine = document.getElementById('carEngine').value || 'No especificado';
-      const client = document.getElementById('clientName').value || 'Cliente';
-      const totalEstimated = document.getElementById('sumTotal').innerText;
-      const serviceName = serviceType === 'preventivo' ? 'Servicio Preventivo Completo' : 'Cambio de Aceite y Filtro';
-
-      let message = `¡Hola Vive Garage! 👋 Quisiera cotizar un servicio a domicilio.%0A%0A` +
-                      `👤 *Cliente:* ${client}%0A` +
-                      `🚗 *Vehículo:* ${brand} ${model} ${year} (Motor: ${engine})%0A%0A` +
-                      `⚙️ *CONFIGURACIÓN SELECCIONADA:*%0A` +
-                      `🛠️ *Tipo de Servicio:* ${serviceName}%0A` +
-                      `🛢️ *Aceite:* ${selectedAceite} (${selectedAceiteRango})%0A` +
-                      `🔧 *Filtro de Aceite:* ${selectedFiltroAceite} (${selectedFiltroAceiteRango})%0A`;
-
-      if (serviceType === 'preventivo') {
-        message += `💨 *Filtro de Aire:* ${selectedFiltroAire} (${selectedFiltroAireRango})%0A` +
-                   `⚡ *Bujías:* ${selectedBujia} (${selectedBujiaRango})%0A`;
-      }
-
-      message += `%0A💵 *TOTAL ESTIMADO:* ${totalEstimated} MXN (IVA incl. en refacciones)%0A` +
-                 `🛠️ *Incluye:* Servicio mano de obra e inspección a domicilio.%0A%0A` +
-                 `¿Me podrían confirmar el costo exacto y disponibilidad para agendar?`;
-
-      window.open(`https://wa.me/523441027500?text=${message}`, '_blank');
-    }
-
-    // Inicialización del cálculo al cargar
-    calculateTotal();
+    // Configura el enlace manual para que use la misma URL de arriba
+    document.getElementById('linkManual').href = urlNueva;
   </script>
 </body>
 </html>
